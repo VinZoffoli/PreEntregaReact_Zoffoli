@@ -1,0 +1,12 @@
+.cart-widget {
+    cursor: pointer;
+}
+
+.item-count {
+    background-color: #ff5733;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}

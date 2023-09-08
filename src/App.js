@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import './App.css';
 
 function App() {
+  const [mensaje, setMensaje] = useState('');
+  const [showItemList, setShowItemList] = useState(false);
+
+  const carritoClick = () => {
+    setMensaje('Lista de Productos disponible:');
+    toast.success('¡Producto agregado al carrito!', {
+      position: toast.POSITION.TOP_RIGHT, 
+    });
+    setShowItemList(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar onCartClick={carritoClick} />
+      {showItemList && <ItemListContainer greeting={mensaje} />}
+      <ToastContainer /> 
     </div>
   );
 }
